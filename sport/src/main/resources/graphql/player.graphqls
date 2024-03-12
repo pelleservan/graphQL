@@ -1,0 +1,6 @@
+type Post {
+    id: ID!
+    first_name: String!
+    last_name: String!
+    date_of_birth: String!
+}
