@@ -9,7 +9,7 @@ public class PlayerDao {
 
     public PlayerDao(List<Player> players) { this.players = players; }
 
-    public List<Player> getAllPlayers() {
+    public List<Player> getPlayers() {
         return this.players.stream().collect(Collectors.toList());
     }
 

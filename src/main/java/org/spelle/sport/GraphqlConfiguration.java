@@ -22,4 +22,18 @@ public class GraphqlConfiguration {
         }
         return new PlayerDao(players);
     }
+
+    @Bean
+    public TeamDao teamDao() {
+        List<Team> teams = new ArrayList<>();
+        for (int teamId = 0; teamId < 5; ++teamId) {
+            Team team = new Team();
+            team.setId("" + teamId);
+            team.setName("Name " + teamId);
+            team.setCountry("Country " + teamId);
+            team.setCity("City " + teamId);
+            teams.add(team);
+        }
+        return new TeamDao(teams);
+    }
 }

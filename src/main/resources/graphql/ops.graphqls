@@ -1,10 +1,11 @@
 # The Root Query for the application
 type Query {
-    getAllPlayers: [Player]
+    getPlayers: [Player]
+    getTeams: [Team]
 }
 
 # The Root Mutation for the application
 type Mutation {
-
     writePlayer(id: String!, first_name: String!, last_name: String!, date_of_birth: String!) : Player!
+    writerTeam(id: String!, name: String!, country: String!, city: String!) : Team!
 }

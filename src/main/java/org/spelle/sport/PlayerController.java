@@ -18,8 +18,8 @@ public class PlayerController {
     }
 
     @QueryMapping
-    public List<Player> getAllPlayers() {
-        return this.playerDao.getAllPlayers();
+    public List<Player> getPlayers() {
+        return this.playerDao.getPlayers();
     }
 
     @MutationMapping
