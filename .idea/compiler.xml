@@ -6,16 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="first_graphql" />
+        <module name="graphQL" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="first_graphql" target="19" />
+      <module name="graphQL" target="19" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="first_graphql" options="-parameters" />
+      <module name="graphQL" options="-parameters" />
     </option>
   </component>
 </project>
