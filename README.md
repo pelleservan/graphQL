@@ -1,2 +1,0 @@
-# graphQL
-graphQl sport project
