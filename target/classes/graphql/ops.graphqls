@@ -1,0 +1,10 @@
+# The Root Query for the application
+type Query {
+    getAllPlayers: [Player]
+}
+
+# The Root Mutation for the application
+type Mutation {
+
+    writePlayer(id: String!, first_name: String!, last_name: String!, date_of_birth: String!) : Player!
+}
