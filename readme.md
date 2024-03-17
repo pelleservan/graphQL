@@ -36,7 +36,12 @@ mvn spring-boot:run
 
 5. Once the server is started, you can access the GraphiQL interface at the following URL: http://localhost:8080/graphiql
 
-6. You can now test your GraphQL queries in the GraphiQL interface.
+6. You can now test your GraphQL queries in the GraphiQL interface. Or use the __node client__ available on the following repository : 
+```bash
+https://github.com/pelleservan/graphQl_client.git
+```
+
+7. An exaustive list of queries and mutation exemple is available bellow.
 
 ## Structure
 
