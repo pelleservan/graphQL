@@ -1,11 +1,35 @@
+input TeamInput {
+    id: String
+    name: String
+    country: String
+    city: String
+}
+
 # The Root Query for the application
 type Query {
     getPlayers: [Player]
+    getPlayerById(id: String!): Player
+    getPlayersByFirstName(first_name: String!): [Player]
+    getPlayersByLastName(last_name: String!): [Player]
+    getPlayersByDateOfBirth(date_of_birth: String!): [Player]
+    getPlayersByTeamId(teamId: String!): [Player]
+
     getTeams: [Team]
+    getTeamById(id: String!): Team
+    getTeamByName(name: String!): Team
+    getTeamByCity(city: String!): [Team]
+    getTeamByCountry(country: String!): [Team]
 }
 
 # The Root Mutation for the application
 type Mutation {
-    writePlayer(id: String!, first_name: String!, last_name: String!, date_of_birth: String!) : Player!
+    updatePlayerFirstNameById(id: String!, first_name: String!): Player!
+    updatePlayerLastNameById(id: String!, last_name: String!): Player!
+    updatePlayerDateOfBirthById(id: String!, date_of_birth: String!): Player!
+    updatePlayerTeamIdById(id: String!, team_id: String!): Player!
+    writePlayer(id: String!, first_name: String!, last_name: String!, date_of_birth: String!, team_id: String!) : Player!
+
     writerTeam(id: String!, name: String!, country: String!, city: String!) : Team!
+    updateTeamNameById(id: String!, name: String): Team!
+    deleteTeamById(id: String!): Boolean
 }

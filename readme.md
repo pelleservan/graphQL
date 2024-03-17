@@ -4,7 +4,35 @@ Sport teams & players management
 
 ## Content
 
-## Get & launch project
+1. [Get & Launch Project](#get--launch-project)
+2. [Structure](#structure)
+3. [Player Queries](#players-queries)
+
+## Get & Launch Project
+
+1. First, make sure you have Maven installed on your system.
+
+2. Clone the project from the GitHub repository:
+
+```bash
+git clone https://github.com/graphql-java-kickstart/graphql-spring-boot.git
+```
+
+3. Navigate to the cloned directory:
+
+```bash
+cd graphql-spring-boot
+```
+
+4. Run the project using Maven:
+
+```bash
+mvn spring-boot:run
+``` 
+
+5. Once the server is started, you can access the GraphiQL interface at the following URL: http://localhost:8080/graphiql
+
+6. You can now test your GraphQL queries in the GraphiQL interface.
 
 ## Structure
 
@@ -32,7 +60,21 @@ Sport teams & players management
 └── target
 ```
 
-## Query
+## Players Queries
+
+1. [GetPlayers](#getplayers)
+2. [GetPlayerById](#getplayerbyid)
+3. [GetPlayersByFirstName](#getplayersbyfirstname)
+4. [GetPlayersByLastName](#getplayersbylastname)
+5. [GetPlayersByDateOfBirth](#getplayersbydateofbirth)
+6. [GetPlayersByTeamId](#getplayersbyteamid)
+
+## Players Mutations
+
+1. [UpdatePlayerFirstNameById]()
+2. [UpdatePlayerLasstNameById]()
+3. [UpdatePlayerDateOfBirthById]()
+4. [UpdatePlayerTeamIdById]()
 
 ### GetPLayers
 
@@ -43,11 +85,12 @@ query GetPLayers {
         first_name
         last_name
         date_of_birth
+        team_id
     }
 }
 ```
 
-```graphql
+```bash
 {
   "data": {
     "getPlayers": [
@@ -55,14 +98,199 @@ query GetPLayers {
         "id": "0",
         "first_name": "First Name 0",
         "last_name": "Last Name 0",
-        "date_of_birth": "Date of Birth 0"
+        "date_of_birth": "Date of Birth 0",
+        "team_id": "2"
       },
       {
         "id": "1",
         "first_name": "First Name 1",
         "last_name": "Last Name 1",
-        "date_of_birth": "Date of Birth 1"
+        "date_of_birth": "Date of Birth 1",
+        "team_id": "2"
+      }
+    ]
+  }
+}
+```
+
+### GetPlayerById
+
+```graphql
+query getPlayerById	{
+    getPlayerById(id: "2") {
+        id
+    		first_name
+    		last_name
+    		date_of_birth
+    		team_id
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "getPlayerById": {
+      "id": "2",
+      "first_name": "First Name 2",
+      "last_name": "Last Name 2",
+      "date_of_birth": "Date of Birth 2",
+      "team_id": "2"
+    }
+  }
+}
+```
+
+### GetPlayersByTeamId
+
+```graphql
+ query getPlayersByTeamId	{
+    getPlayersByTeamId(teamId: "2") {
+        id
+    		first_name
+    		last_name
+    		date_of_birth
+    		team_id
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "getPlayers": [
+      {
+        "id": "0",
+        "first_name": "First Name 0",
+        "last_name": "Last Name 0",
+        "date_of_birth": "Date of Birth 0",
+        "team_id": "2"
       },
+      {
+        "id": "1",
+        "first_name": "First Name 1",
+        "last_name": "Last Name 1",
+        "date_of_birth": "Date of Birth 1",
+        "team_id": "2"
+      }
+    ]
+  }
+}
+```
+
+### UpdatePayerFirstNameById
+
+```graphql
+mutation UpdatePlayerFirstNameById {
+    updatePlayerFirstNameById(id: "1", first_name: "Updated First Name") {
+        id
+        first_name
+        last_name
+        date_of_birth
+    		team_id
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "updatePlayerFirstNameById": {
+      "id": "1",
+      "first_name": "Updated First Name",
+      "last_name": "Last Name 1",
+      "date_of_birth": "Date of Birth 1",
+      "team_id": "2"
+    }
+  }
+}
+``` 
+
+### GetPlayersByFirstName
+
+```graphql
+query getPlayerByFirstName	{
+    getPlayerByFirstName(first_name: "First Name 1") {
+        id
+    		first_name
+    		last_name
+    		date_of_birth
+    		team_id
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "getPlayerByFirstName": [
+      {
+        "id": "1",
+        "first_name": "First Name 1",
+        "last_name": "Last Name 1",
+        "date_of_birth": "Date of Birth 1",
+        "team_id": "2"
+      }
+    ]
+  }
+}
+```
+
+### GetPlayersByLastName
+
+```graphql
+query getPlayerByLastName	{
+    getPlayerByLastName(last_name: "Last Name 1") {
+        id
+    		first_name
+    		last_name
+    		date_of_birth
+    		team_id
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "getPlayerByLastName": [
+      {
+        "id": "1",
+        "first_name": "First Name 1",
+        "last_name": "Last Name 1",
+        "date_of_birth": "Date of Birth 1",
+        "team_id": "2"
+      }
+    ]
+  }
+}
+```
+
+### GetPlayersByDateOfBirth
+
+```graphql
+query getPlayersByDateOfBirth	{
+    getPlayerByDateOfBirth(date_of_birth: "Date of Birth 1") {
+        id
+    		first_name
+    		last_name
+    		date_of_birth
+    		team_id
+    }
+}
+````
+
+```bash
+{
+  "data": {
+    "getPlayerByDateOfBirth": [
+      {
+        "id": "1",
+        "first_name": "First Name 1",
+        "last_name": "Last Name 1",
+        "date_of_birth": "Date of Birth 1",
+        "team_id": "2"
+      }
     ]
   }
 }
@@ -81,7 +309,7 @@ query GetTeams {
 }
 ```
 
-```graphql
+```bash
 {
   "data": {
     "getTeams": [
@@ -99,5 +327,151 @@ query GetTeams {
       }
     ]
   }
+}
+```
+
+## Team Queries
+
+
+
+### GetTeamById
+
+```graphql
+query GetTeamById {
+    getTeamById(id: "1") {
+        id
+        name
+        country
+        city
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "getTeamById": {
+      "id": "1",
+      "name": "Name 1",
+      "country": "Country 1",
+      "city": "City 1"
+    }
+  }
+}
+```
+
+### GetTeamByName
+
+```graphql
+query GetTeamByName {
+    getTeamByName(name: "Name 1") {
+      id
+      name
+      country
+      city
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "getTeamByName": {
+      "id": "1",
+      "name": "Name 1",
+      "country": "Country 1",
+      "city": "City 1"
+    }
+  }
+}
+```
+
+### GetTeamByCity
+
+```graphql
+query GetTeamByCity {
+    getTeamByCity(city: "City 1") {
+      id
+      name
+      country
+      city
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "getTeamByCity": [
+      {
+        "id": "1",
+        "name": "Name 1",
+        "country": "Country 1",
+        "city": "City 1"
+      }
+    ]
+  }
+}
+```
+
+### GetTeamByCountry
+
+```graphql
+query GetTeamBCountry {
+    getTeamByCountry(country: "Country 1") {
+      id
+      name
+      country
+      city
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "getTeamByCountry": [
+      {
+        "id": "1",
+        "name": "Name 1",
+        "country": "Country 1",
+        "city": "City 1"
+      }
+    ]
+  }
+}
+```
+
+### UpdateTeamNameById
+
+```graphql
+mutation {
+    updateTeamNameById(id: "1", name: "Updated Name") {
+        id
+        name
+        country
+        city
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "updateTeamNameById": {
+      "id": "1",
+      "name": "Updated Name",
+      "country": "Country 1",
+      "city": "City 1"
+    }
+  }
+}
+```
+
+### DeleteTeamById
+
+```bash
+mutation deleteTeamById {
+  deleteTeamById(id: "1") 
 }
 ```

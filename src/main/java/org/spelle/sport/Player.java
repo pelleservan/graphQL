@@ -6,6 +6,7 @@ public class Player {
     public String first_name;
     public String last_name;
     public String date_of_birth;
+    public String team_id;
 
     public String getId() {
         return id;
@@ -37,5 +38,13 @@ public class Player {
 
     public void setDate_of_birth(String date_of_birth) {
         this.date_of_birth = date_of_birth;
+    }
+
+    public String getTeam_id() {
+        return team_id;
+    }
+
+    public void setTeam_id(String team_id) {
+        this.team_id = team_id;
     }
 }

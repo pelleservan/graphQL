@@ -3,4 +3,5 @@ type Player {
     first_name: String!
     last_name: String!
     date_of_birth: String!
+    team_id: String!
 }
