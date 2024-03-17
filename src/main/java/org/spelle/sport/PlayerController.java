@@ -53,6 +53,26 @@ public class PlayerController {
     }
 
     @MutationMapping
+    public Player updatePlayerLastNameById(@Argument String id, @Argument String last_name) {
+        return this.playerDao.updatePlayerLastNameById(id, last_name);
+    }
+
+    @MutationMapping
+    public Player updatePlayerDateOfBirthById(@Argument String id, @Argument String date_of_birth) {
+        return this.playerDao.updatePlayerDateOfBirthById(id, date_of_birth);
+    }
+
+    @MutationMapping
+    public Player updatePlayerTeamIdById(@Argument String id, @Argument String team_id) {
+        return this.playerDao.updatePlayerTeamIdById(id, team_id);
+    }
+
+    @MutationMapping
+    public void deletePlayerById(@Argument("id") String id) {
+        this.playerDao.deletePlayerById(id);
+    }
+
+    @MutationMapping
     public Player writePlayer(@Argument String id, @Argument String first_name, @Argument String last_name, @Argument String date_of_birth, @Argument String team_id) {
 
         Player player = new Player();

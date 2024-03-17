@@ -35,8 +35,18 @@ public class TeamController {
     public List<Team> getTeamByCountry(@Argument String country) { return this.teamDao.getTeamByCountry(country); }
 
     @MutationMapping
-    public Team updateTeamNameById(@Argument String id, @Argument String  name) {
+    public Team updateTeamNameById(@Argument String id, @Argument String name) {
         return this.teamDao.updateTeamNameById(id, name);
+    }
+
+    @MutationMapping
+    public Team updateTeamCountryById(@Argument String id, @Argument String country) {
+        return this.teamDao.updateTeamCountryById(id, country);
+    }
+
+    @MutationMapping
+    public Team updateTeamCityById(@Argument String id, @Argument String city) {
+        return this.teamDao.updateTeamCityById(id, city);
     }
 
     @MutationMapping

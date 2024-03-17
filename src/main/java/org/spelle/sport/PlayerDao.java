@@ -84,6 +84,10 @@ public class PlayerDao {
         return existingPlayer;
     }
 
+    public void deletePlayerById(String id) {
+        this.players.removeIf(player -> player.getId().equals(id));
+    }
+
     public  Player savePlayer(Player player) {
         this.players.add(player);
 

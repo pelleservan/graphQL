@@ -5,6 +5,14 @@ input TeamInput {
     city: String
 }
 
+input PlayerInput {
+    id: String
+    first_name: String
+    last_name: String
+    date_of_birth: String
+    team_id: String
+}
+
 # The Root Query for the application
 type Query {
     getPlayers: [Player]
@@ -27,9 +35,12 @@ type Mutation {
     updatePlayerLastNameById(id: String!, last_name: String!): Player!
     updatePlayerDateOfBirthById(id: String!, date_of_birth: String!): Player!
     updatePlayerTeamIdById(id: String!, team_id: String!): Player!
+    deletePlayerById(id: String!): Boolean
     writePlayer(id: String!, first_name: String!, last_name: String!, date_of_birth: String!, team_id: String!) : Player!
 
     writerTeam(id: String!, name: String!, country: String!, city: String!) : Team!
     updateTeamNameById(id: String!, name: String): Team!
+    updateTeamCountryById(id: String!, country: String): Team!
+    updateTeamCityById(id: String!, city: String): Team!
     deleteTeamById(id: String!): Boolean
 }

@@ -6,7 +6,11 @@ Sport teams & players management
 
 1. [Get & Launch Project](#get--launch-project)
 2. [Structure](#structure)
-3. [Player Queries](#players-queries)
+3. [Schemas](#schemas)
+3. [Players Queries](#players-queries)
+4. [Players Mutations](#players-mutations)
+5. [Teams Queries](#teams-queries)
+6. [Teams Mutations](#teams-mutations)
 
 ## Get & Launch Project
 
@@ -60,6 +64,31 @@ mvn spring-boot:run
 └── target
 ```
 
+## Schemas
+
+### Player
+
+```graphql
+type Player {
+    id: ID!
+    first_name: String!
+    last_name: String!
+    date_of_birth: String!
+    team_id: String!
+}
+```
+
+### Team
+
+```graphql
+type Team {
+    id: ID!
+    name: String!
+    country: String!
+    city: String!
+}
+```
+
 ## Players Queries
 
 1. [GetPlayers](#getplayers)
@@ -71,10 +100,26 @@ mvn spring-boot:run
 
 ## Players Mutations
 
-1. [UpdatePlayerFirstNameById]()
-2. [UpdatePlayerLasstNameById]()
-3. [UpdatePlayerDateOfBirthById]()
-4. [UpdatePlayerTeamIdById]()
+1. [UpdatePlayerFirstNameById](#updatepayerfirstnamebyid)
+2. [UpdatePlayerLasstNameById](#updateplayerlastnamebyid)
+3. [UpdatePlayerDateOfBirthById](#updateplayerdateofbirthbyid)
+4. [UpdatePlayerTeamIdById](#updateplayerteamidbyid)
+5. [DeletePlayerById](#deleteplayerbyplayerid)
+
+## Teams Queries
+
+1. [GetTeams](#getteams)
+1. [GetTeamById](#getteambyid)
+2. [GetTeamByName](#getteambyname)
+3. [GetTeamsByCountry](#getteambycountry)
+4. [GetTeamsByCity](#getteambycity)
+
+## Teams Mutations
+
+1. [UpdateTeamNameById](#updateteamnamebyid)
+2. [UpdateTeamCountryById](#updateteamcountrybyid)
+3. [UpdateTeamCityById](#updateteamcitybyid)
+4. [DeleteTeamById](#deleteteambyid)
 
 ### GetPLayers
 
@@ -296,6 +341,122 @@ query getPlayersByDateOfBirth	{
 }
 ```
 
+### UpdatePlayerFirstNameById
+
+```graphql
+mutation UpdatePlayerFirstNameById {
+    updatePlayerFirstNameById(id: "1", first_name: "Updated First Name") {
+        id
+        first_name
+        last_name
+        date_of_birth
+    		team_id
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "updatePlayerFirstNameById": {
+      "id": "1",
+      "first_name": "Updated First Name",
+      "last_name": "Last Name 1",
+      "date_of_birth": "Date of Birth 1",
+      "team_id": "2"
+    }
+  }
+}
+```
+
+### UpdatePlayerLastNameById 
+
+```graphql
+mutation UpdatePlayerLastNameById {
+    updatePlayerLastNameById(id: "2", last_name: "Updated Last Name") {
+        id
+        first_name
+        last_name
+        date_of_birth
+    		team_id
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "updatePlayerLastNameById": {
+      "id": "2",
+      "first_name": "First Name 2",
+      "last_name": "Updated Last Name",
+      "date_of_birth": "Date of Birth 2",
+      "team_id": "2"
+    }
+  }
+}
+```
+
+### UpdatePlayerDateOfBirthById
+
+```graphql
+mutation UpdatePlayerDateOfBirthById {
+    updatePlayerDateOfBirthById(id: "1", date_of_birth: "Updated Date of Birth") {
+        id
+        first_name
+        last_name
+        date_of_birth
+    		team_id
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "updatePlayerDateOfBirthById": {
+      "id": "1",
+      "first_name": "First Name 1",
+      "last_name": "Last Name 1",
+      "date_of_birth": "Updated Date of Birth",
+      "team_id": "2"
+    }
+  }
+}
+```
+
+### UpdatePlayerTeamIdById
+
+```graphql
+mutation UpdatePlayerTeamIdById {
+    updatePlayerTeamIdById(id: "1", team_id: "3") {
+        id
+        first_name
+        last_name
+        date_of_birth
+    		team_id
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "updatePlayerTeamIdById": {
+      "id": "1",
+      "first_name": "First Name 1",
+      "last_name": "Last Name 1",
+      "date_of_birth": "Updated Date of Birth",
+      "team_id": "3"
+    }
+  }
+}
+```
+
+### DeletePlayerById
+
+
+
 ### GetTeams
 
 ```graphql
@@ -329,10 +490,6 @@ query GetTeams {
   }
 }
 ```
-
-## Team Queries
-
-
 
 ### GetTeamById
 
@@ -463,6 +620,58 @@ mutation {
       "name": "Updated Name",
       "country": "Country 1",
       "city": "City 1"
+    }
+  }
+}
+```
+
+### UpdateTeamCountryById
+
+```graphql
+mutation UpdateTeamCountryById {
+    updateTeamCountryById(id: "1", country: "Updated Country") {
+        id
+        name
+        country
+    		city
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "updateTeamCountryById": {
+      "id": "1",
+      "name": "Name 1",
+      "country": "Updated Country",
+      "city": "City 1"
+    }
+  }
+}
+```
+
+### UpdateTeamCityById
+
+```graphql
+mutation UpdateTeamCityById {
+    updateTeamCityById(id: "1", city: "Updated City") {
+        id
+        name
+        country
+    		city
+    }
+}
+```
+
+```bash
+{
+  "data": {
+    "updateTeamCityById": {
+      "id": "1",
+      "name": "Name 1",
+      "country": "Updated Country",
+      "city": "Updated City"
     }
   }
 }

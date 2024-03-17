@@ -49,6 +49,26 @@ public class TeamDao {
         return existingTeam;
     }
 
+    public Team updateTeamCountryById(String id, String country) {
+        Team existingTeam = this.getTeamById(id);
+        if (existingTeam == null) {
+            return null;
+        }
+        existingTeam.setCountry(country);
+
+        return existingTeam;
+    }
+
+    public Team updateTeamCityById(String id, String city) {
+        Team existingTeam = this.getTeamById(id);
+        if (existingTeam == null) {
+            return null;
+        }
+        existingTeam.setCity(city);
+
+        return existingTeam;
+    }
+
     public void deleteTeamById(String id) {
         this.teams.removeIf(team -> team.getId().equals(id));
     }
